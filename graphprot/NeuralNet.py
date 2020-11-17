@@ -293,11 +293,7 @@ class NeuralNet(object):
             loss_val += loss_func(pred, data.y)
             out += pred.reshape(-1).tolist()
 
-        if self.task == 'class':
-            return out, y, loss_val
-
-        else:
-            return out, y, loss_val
+        return out, y, loss_val
 
 
     def _epoch(self, epoch):
@@ -319,11 +315,7 @@ class NeuralNet(object):
             out += pred.reshape(-1).tolist()
             self.optimizer.step()
 
-        if self.task == 'class':
-            return out, y, running_loss
-
-        else:
-            return out, y, running_loss
+        return out, y, running_loss
 
             
     def get_metrics(self, data='eval', threshold=4, binary=True):
